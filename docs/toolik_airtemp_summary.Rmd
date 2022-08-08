@@ -25,6 +25,7 @@ toolik_weather <- read_csv(here::here("data", "data-raw", "toolik_weather.csv"))
 - First: Look at the data you've read in (always always)
 
 - Second: What is that warning? `problems()` - line 6424
+#parsing error- assigned the class based on initial lines, but later it didn't match
 
 - How does R assign classes to data it reads in? See: https://readr.tidyverse.org/articles/readr.html
 
@@ -51,9 +52,11 @@ I don't want to deal with those capital letters. These aren't even bad looking c
 ```{r}
 toolik_weather <- toolik_weather %>% clean_names() # What does this do? Say it in words.
 
-# What is this %>% thing? Meet the pipe operator! Also, as of a couple months ago, |> is a native pipe operator (versus %>%, which comes along with the tidyverse)
+# What is this %>% thing? Meet the pipe operator! Also, as of a couple months ago, |> is a native pipe operator (versus %>%, which comes along with the tidyverse) 
+
 
 # Now what are the column names?
+#takes all column names, and puts them into a case that you specify
 ```
 
 ```{r}
@@ -68,7 +71,7 @@ Let's make a jitterplot of temperatures by month.
 ```{r}
 toolik_temp_plot <- ggplot(data = toolik_weather, aes(x = as.factor(month), y = daily_air_temp_mean_c)) +
   geom_jitter(aes(color = daily_air_temp_mean_c), show.legend = FALSE) +
-  scale_color_gradient(low = "blue", high = "orange") +
+  scale_color_gradient(low = "purple", high = "black") +
   theme_minimal() +
   labs(title = "Toolik Station daily air temperature",
        x = "Month",
@@ -80,6 +83,7 @@ toolik_temp_plot
 ## Export a figure
 
 ```{r}
+#unless you tell it otherwise it will just pull the last graph, but you can specify plot = 
 ggsave(here::here("figs", "toolik_temp_plot.png"), height = 6, width = 7)
 ```
 
