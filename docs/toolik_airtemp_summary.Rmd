@@ -12,7 +12,7 @@ library(skimr)
 ```
 
 ## Read in the Toolik Lake meteorologic data
-
+ 
 **Data:** Shaver, G. 2019. A multi-year DAILY weather file for the Toolik Field Station at Toolik Lake, AK starting 1988 to present. ver 4. Environmental Data Initiative. https://doi.org/10.6073/pasta/ce0f300cdf87ec002909012abefd9c5c (Accessed 2021-08-08).
 
 The data are stored in the `data-raw` subfolder. We'll use `here::here()` to point to it, and read it in using the `readr::read_csv()` function from the `readr` package (part of the `tidyverse`). 
